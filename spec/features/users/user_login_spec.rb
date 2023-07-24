@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "exsisting user login" do
+RSpec.describe "existing user login" do
   it "can login with valid credentials" do
     user = User.create(username: "testertest", email: "my@email.com", password: "test")
 
