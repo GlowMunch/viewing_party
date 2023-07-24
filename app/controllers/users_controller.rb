@@ -21,14 +21,21 @@ class UsersController < ApplicationController
   end
 
   def create
-    new_user = User.create(user_params)
-    redirect_to user_path(new_user.id)
-    flash[:success] = "Welcome, #{new_user.username}!"
+    user = user_params
+    user[:username] = user[:username].downcase
+    new_user = User.new(user)
+    if new_user.save
+      redirect_to user_path(new_user.id)
+      flash[:success] = "Welcome, #{new_user.username}!"
+    else
+      redirect_to new_register_path
+      flash[:error] = "Sorry, credentials don't match"
+    end
   end
 
   private
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :email)
+    params.require(:user).permit(:username, :password, :password_confirmation, :email, :id)
   end
 end
 

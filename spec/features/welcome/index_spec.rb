@@ -27,10 +27,10 @@ RSpec.describe 'landing page' do
 
     it 'links of existing users' do
       within "#users" do
-        expect(page).to have_link "#{@user1.name}"
-        expect(page).to have_link "#{@user2.name}"
+        expect(page).to have_link "#{@user1.username}"
+        expect(page).to have_link "#{@user2.username}"
 
-        click_link "#{@user1.name}"
+        click_link "#{@user1.username}"
         expect(current_path).to eq user_path(@user1.id)
       end
     end

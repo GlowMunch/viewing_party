@@ -16,13 +16,13 @@ RSpec.describe "User Registration Page" do
       @user4 = FactoryBot.create(:user)
     end
 
-    it "Sees form for a new user" do
+    it "Form to create user" do
 
       visit root_path
       click_on "Create New User"
       expect(current_path).to eq(new_register_path)
 
-      username = "President_Person"
+      username = "president_person"
       email = "user@email.com"
       password = "password"
 
@@ -34,6 +34,54 @@ RSpec.describe "User Registration Page" do
       click_on "Create User"
 
       expect(page).to have_content("Welcome, #{username}!")
+      save_and_open_page
+
+    end
+
+    it "needs password to match" do
+      visit new_register_path
+
+      username = "President_Person"
+      email = "user@email.com"
+      password = "password"
+      password1 = "bad_password"
+
+      fill_in :user_username, with: username
+      fill_in :user_email, with: email
+      fill_in :user_password, with: password
+      fill_in :user_password_confirmation, with: password1
+
+      click_on "Create User"
+
+      expect(current_path).to eq(new_register_path)
+      expect(page).to have_content("Sorry, credentials don't match")
+    end
+
+    it "needs username to be unique" do
+      visit new_register_path
+
+      username = "president_person"
+      email = "user@email.com"
+      password = "password"
+      password1 = "bad_password"
+
+      fill_in :user_username, with: username
+      fill_in :user_email, with: email
+      fill_in :user_password, with: password
+      fill_in :user_password_confirmation, with: password
+
+      click_on "Create User"
+
+      visit new_register_path
+
+      fill_in :user_username, with: username
+      fill_in :user_email, with: email
+      fill_in :user_password, with: password1
+      fill_in :user_password_confirmation, with: password1
+
+      click_on "Create User"
+
+      expect(page).to have_content("Sorry, credentials don't match")
 
     end
   end
