@@ -7,19 +7,18 @@
   <h3>Viewing Party Invites</h3>
   <li>Image</li>
   <% @viewing_parties.each do |party|%>
-  <li>Date & Time: <%= party.date_time %></li>
-  <li>Party Host: <%= @host.name %></li>
+    <li>Date & Time: <%= party.date_time %></li>
+    <li>Party Host: <%= @host.name %></li>
   <% end %>
   <% @viewing_users.each do |user| %></li>
   <li>Party Guest Invitees: </li>
-  <% end %>
-  </br>
-  <h3>Viewing Parties as Host</h3>
-  <li>"/coverage/assets/0.12.3/images/</li>
-  <% @viewing_parties.each do |party|%>
+<% end %>
+</br>
+<h3>Viewing Parties as Host</h3>
+<li>"/coverage/assets/0.12.3/images/</li>
+<% @viewing_parties.each do |party|%>
   <li>Date & Time: <%= party.date_time %></li>
-  <li>Party Host: <%= @user.name %></li>
+  <li>Party Host: <%= @user.username %></li>
   <ul><% end %>
   <li>Party Guest Invitees: </li>
 </div>
-

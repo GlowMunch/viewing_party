@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :user do
-    username {Faker::Name.name}
+    username {Faker::Internet.username}
     email {Faker::Internet.email}
     password {Faker::Internet.password}
   end
@@ -9,9 +9,9 @@ FactoryBot.define do
     title {Faker::Movie.title}
     genre {Faker::Book.genre}
     summary {Faker::Hipster.sentence}
-    cast {Faker::Name.name}   # FactoryBot.create_list(:cast, 10)
+    cast {Faker::Internet.username}   # FactoryBot.create_list(:cast, 10)
     reviews {Faker::Hipster.sentence}
-    reviewers {Faker::Name.name} # FactoryBot.create_list(:reviewers, 10)
+    reviewers {Faker::Internet.username} # FactoryBot.create_list(:reviewers, 10)
     rating {Faker::Number.between(from: 1, to: 10)}     #(0..10).sample(1)} # Controller/Model logic
     runtime {Faker::Number.between(from: 90, to: 200)}
   end

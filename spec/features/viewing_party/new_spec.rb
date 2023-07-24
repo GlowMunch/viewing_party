@@ -44,10 +44,10 @@ RSpec.describe "Viewing Party New Page" do
       expect(page).to have_field("Party Duration:")
       expect(page).to have_field("When:")
       expect(page).to have_field("Start Time:")
-      expect(page).to have_content(@user1.name.first)
-      expect(page).to have_content(@user2.name.first)
-      expect(page).to have_content(@user3.name.first)
-      expect(page).to have_content(@user4.name.first)
+      expect(page).to have_content(@user1.username)
+      expect(page).to have_content(@user2.username)
+      expect(page).to have_content(@user3.username)
+      expect(page).to have_content(@user4.username)
       expect(page).to have_button("Create Party")
     end
 

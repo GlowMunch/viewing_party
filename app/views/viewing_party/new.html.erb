@@ -9,7 +9,7 @@
   <%= f.label  :time, "Start Time:" %>
   <%= f.text_field :time %></br>
   <% @users.each do |user| %>
-    <%= f.label :user, user.name.first %>
+    <%= f.label :user, user.username %>
     <%= f.check_box :user, { id: "user_#{user.id}" } %></br>
   <% end %>
   <% f.hidden_field :api_movie_id, value: @movie.id %>

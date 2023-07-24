@@ -34,7 +34,6 @@ RSpec.describe "User Registration Page" do
       click_on "Create User"
 
       expect(page).to have_content("Welcome, #{username}!")
-      save_and_open_page
 
     end
   end

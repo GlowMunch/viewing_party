@@ -21,7 +21,7 @@ RSpec.describe 'landing page' do
 
     it 'create new user button' do
       within "#title" do
-        expect(page).to have_button "Create New User"
+        expect(page).to have_link "Create New User"
       end
     end
 
