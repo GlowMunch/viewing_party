@@ -32,3 +32,5 @@
 /coverage
 # Ignore formatting
 /config/application.yml
+
+/coverage
