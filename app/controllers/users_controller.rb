@@ -1,5 +1,10 @@
 require 'faraday'
 class UsersController < ApplicationController
+
+  def new
+    @user = User.new
+  end
+
   def show
     @user = User.find(params[:id])
     @viewing_parties = @user.viewing_parties
@@ -15,11 +20,15 @@ class UsersController < ApplicationController
     end
   end
 
-  def new
-
+  def create
+    new_user = User.create(user_params)
+    redirect_to user_path(new_user.id)
+    flash[:success] = "Welcome, #{new_user.username}!"
   end
 
-  def create
+  private
+  def user_params
+    params.require(:user).permit(:username, :password, :password_confirmation, :email)
   end
 end
 

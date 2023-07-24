@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :user do
-    name {Faker::Name.name}
+    username {Faker::Name.name}
     email {Faker::Internet.email}
+    password {Faker::Internet.password}
   end
 
   factory :movie do
@@ -18,7 +19,7 @@ FactoryBot.define do
   factory :viewing_party do
     duration {Faker::Number.between(from: 200, to: 400)}
     date_time {Faker::Time.backward(days: 14, period: :evening)}
-    movie_id 
+    movie_id
   end
 
   factory :viewing_users do

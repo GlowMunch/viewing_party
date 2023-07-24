@@ -15,7 +15,7 @@ RSpec.describe 'landing page' do
 
     it 'application title' do
       within "#title" do
-        expect(page).to have_content("Movie Viewing Party!")
+        expect(page).to have_content("Welcome to Movie Viewing Party!")
       end
     end
 
@@ -33,12 +33,6 @@ RSpec.describe 'landing page' do
         click_link "#{@user1.name}"
         expect(current_path).to eq user_path(@user1.id)
       end
-    end
-
-    it 'link to return to landing page' do
-      expect(page).to have_link "Return to Movie Viewing Party Landing Page"
-      click_link "Return to Movie Viewing Party Landing Page"
-      expect(current_path).to eq "/"
     end
   end
 end

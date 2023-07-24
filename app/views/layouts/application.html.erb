@@ -11,6 +11,12 @@
   </head>
 
   <body>
+  <div id="home_link">
+    <p><%=  link_to "Return to Movie Viewing Party Landing Page", root_path %></p>
+  </div>
+      <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: name %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

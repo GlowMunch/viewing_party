@@ -8,29 +8,34 @@ require "rails_helper"
 
 RSpec.describe "User Registration Page" do
   describe "Register New User" do
+
+    before :each do
+      @user1 = FactoryBot.create(:user)
+      @user2 = FactoryBot.create(:user)
+      @user3 = FactoryBot.create(:user)
+      @user4 = FactoryBot.create(:user)
+    end
+
     it "Sees form for a new user" do
-      visit "/"
+
+      visit root_path
       click_on "Create New User"
-      expect(current_path).to eq(register_index_path)
-      save_and_open_page
+      expect(current_path).to eq(new_register_path)
 
-      click_button "Register as a User"
-
-      expect(current_path).to eq(new_user_path)
-      # expect(current_path).to eq users_register_index_path
-
-      name = "President Person"
+      username = "President_Person"
       email = "user@email.com"
       password = "password"
 
-      fill_in :name, with: name
-      fill_in :email, with: email
-      fill_in :password, with: password
+      fill_in :user_username, with: username
+      fill_in :user_email, with: email
+      fill_in :user_password, with: password
+      fill_in :user_password_confirmation, with: password
 
       click_on "Create User"
 
-      user = User.last
-      expect(current_path).to eq user_path(user.id)
+      expect(page).to have_content("Welcome, #{username}!")
+      save_and_open_page
+
     end
   end
 

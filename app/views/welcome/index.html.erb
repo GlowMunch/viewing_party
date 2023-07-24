@@ -1,11 +1,11 @@
 <div id="title">
-  <h1> Movie Viewing Party! </h1>
-  <p><%=  button_to "Create New User", register_index_path, method: :get %></p>
+  <h1> Welcome to Movie Viewing Party! </h1>
+  <p><%=  link_to "Create New User", new_register_path %></p>
 </div>
 
 <div id="users">
-  <h2> Movie Viewing Users: </h2>
+  <h2> Exsisting User? </h2>
   <p><%  @users.each do |person| %></p>
-    <p><%= link_to "#{person.name}", user_path(person.id) %>
-  <p><%  end %></p>
+    <p><%= link_to "#{person.username}", user_path(person.id) %>
+  <p><% end %></p>
 </div>
