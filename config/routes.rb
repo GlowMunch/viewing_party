@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :users do
     resources :register, only:[:index, :show, :create]
   end
-  resources :register, controller: "users/register"
+  resources :register, controller: "users/new"
 
   resources :users, only:[:show] do
     resources :discover, only:[:index]
@@ -15,5 +15,5 @@ Rails.application.routes.draw do
     resources :search, only: [:search]
   end
 
-  get "/", to: "application#landing", controller: [:user]
+  root "welcome#index"
 end

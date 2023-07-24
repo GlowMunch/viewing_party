@@ -7,10 +7,13 @@ require "rails_helper"
 # I'm taken to my dashboard page `/users/:id`
 
 RSpec.describe "User Registration Page" do
-  describe "Register new User" do
+  describe "Register New User" do
     it "Sees form for a new user" do
-      visit "/register"
+      visit "/"
+      click_on "Create New User"
+      expect(current_path).to eq(register_index_path)
       save_and_open_page
+
       click_button "Register as a User"
 
       expect(current_path).to eq(new_user_path)
