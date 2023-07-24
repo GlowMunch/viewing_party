@@ -1,11 +1,5 @@
 <div id="title">
   <h1> Welcome to Movie Viewing Party! </h1>
-  <p><%=  link_to "Create New User", new_register_path %></p>
-</div>
-
-<div id="users">
-  <h2> Exsisting User? </h2>
-  <p><%  @users.each do |person| %></p>
-    <p><%= link_to "#{person.username}", user_path(person.id) %>
-  <p><% end %></p>
+  <%= link_to "Create New User", new_register_path %>
+  <%= link_to "I already have an account", login_path %>
 </div>

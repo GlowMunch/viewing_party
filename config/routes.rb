@@ -13,5 +13,8 @@ Rails.application.routes.draw do
     resources :search, only: [:search]
   end
 
+  get "/login", to: "users#login_form"
+  post "/login", to: "users#login"
+
   root "welcome#index"
 end
