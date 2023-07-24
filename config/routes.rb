@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   resources :movies
   namespace :users do
     resources :register, only:[:index, :show, :create]
-
   end
+  resources :register, controller: "users/register"
+
   resources :users, only:[:show] do
     resources :discover, only:[:index]
     resources :movies, only: [:index, :show] do
