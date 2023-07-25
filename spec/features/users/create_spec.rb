@@ -19,7 +19,7 @@ RSpec.describe "User Registration Page" do
     it "Form to create user" do
 
       visit root_path
-      click_on "Create New User"
+      click_on "Register as a User"
       expect(current_path).to eq(new_register_path)
 
       username = "president_person"
@@ -34,7 +34,7 @@ RSpec.describe "User Registration Page" do
       click_on "Create User"
 
       expect(page).to have_content("Welcome, #{username}!")
-      save_and_open_page
+
 
     end
 

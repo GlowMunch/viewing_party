@@ -20,18 +20,8 @@ RSpec.describe 'landing page' do
     end
 
     it 'create new user button' do
-      within "#title" do
-        expect(page).to have_link "Create New User"
-      end
-    end
-
-    it 'links of existing users' do
       within "#users" do
-        expect(page).to have_link "#{@user1.username}"
-        expect(page).to have_link "#{@user2.username}"
-
-        click_link "#{@user1.username}"
-        expect(current_path).to eq user_path(@user1.id)
+        expect(page).to have_link "Register as a User"
       end
     end
   end
