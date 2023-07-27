@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   namespace :admin do
-    resources :dashboard, only: [:index]
+    get 'dashboard', to: 'dashboard#index', as: :dashboard
+    # resources :dashboard, only: [:index]
   end
 
   get "/login", to: "sessions#new"

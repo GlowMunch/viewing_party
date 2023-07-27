@@ -16,7 +16,7 @@ RSpec.describe "Admin login" do
 
       click_on 'Log In'
 
-      expect(current_path).to eq(root_path)
+      expect(current_path).to eq(admin_dashboard_path)
     end
   end
 
@@ -31,7 +31,7 @@ RSpec.describe "Admin login" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      visit admin_dashboard_index_path
+      visit admin_dashboard_path
 
       expect(page).to have_content("The page you were looking for doesn't exist.")
     end
