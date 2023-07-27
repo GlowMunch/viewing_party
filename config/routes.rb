@@ -13,8 +13,15 @@ Rails.application.routes.draw do
     resources :search, only: [:search]
   end
 
-  get "/login", to: "users#login_form"
-  post "/login", to: "users#login"
+  resources :sessions, only: [:new, :create, :destroy]
+
+  namespace :admin do
+    resources :dashboard, only: [:index]
+  end
+
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
+
 
   root "welcome#index"
 end

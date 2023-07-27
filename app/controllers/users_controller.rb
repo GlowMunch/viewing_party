@@ -33,22 +33,22 @@ class UsersController < ApplicationController
     end
   end
 
-  def login_form
+  # def login_form
 
-  end
+  # end
 
-  def login
-    user = User.find_by(username: params[:username])
+  # def login
+  #   user = User.find_by(username: params[:username])
 
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      flash[:success] = "Welcome, #{user.username}!"
-      redirect_to user_path(user.id)
-    else
-      flash[:error] = "Invalid Cridentials"
-      render :login_form
-    end
-  end
+  #   if user && user.authenticate(params[:password])
+  #     session[:user_id] = user.id
+  #     flash[:success] = "Welcome, #{user.username}!"
+  #     redirect_to user_path(user.id)
+  #   else
+  #     flash[:error] = "Invalid Cridentials"
+  #     render :login_form
+  #   end
+  # end
 
   private
   def user_params
