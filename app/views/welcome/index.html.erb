@@ -3,8 +3,13 @@
   <h1> Welcome to Movie Viewing Party! </h1>
 </div>
 <div id="users">
-  <% if current_user %>
+  <% if current_user && @user.role == "default" %>
     <%= button_to "Log Out", logout_path, method: :delete %>
+    </br></br></br>
+    <%= "Exsisting Users" %>
+    <% @users.each do |user| %>
+      <%= user.email %>
+    <% end %>
   <% else %>
     <%= link_to "Register as a User", new_register_path %>
     <%= link_to "I already have an account", login_path, method: :get%>
