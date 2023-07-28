@@ -1,6 +1,7 @@
 require "faraday"
 class SessionsController < ApplicationController
 
+  #login form
   def new
   end
 
@@ -18,13 +19,14 @@ class SessionsController < ApplicationController
       end
     else
       flash[:error] = "Sorry, your credentials are bad."
-      render :login_form
+      render :new
     end
   end
 
   def destroy
     reset_session
-    redirect_to root_path
+    flash[:message] = "You have been logged out."
+    render :new
   end
 
   private

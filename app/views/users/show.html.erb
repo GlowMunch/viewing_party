@@ -1,4 +1,11 @@
+<%= render partial: "shared/nav" %>
+
 <h1><%= @user.username %>'s Dashboard </h1>
+
+<%= cookies[:greeting] %>
+</br>
+<%= session[:user_id] %>
+
 <p><%= button_to "Discover Movies", user_discover_index_path(@user.id), method: :get %></p>
 </br>
 <h1>Available Viewing Parties</h1>

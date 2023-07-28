@@ -6,7 +6,9 @@ class UsersController < ApplicationController
   end
 
   def show
+
     @user = User.find(params[:id])
+
     @viewing_parties = @user.viewing_parties
     @viewing_users = @user.viewing_users
     @host = @viewing_users.where(host: "YES")

@@ -1,13 +1,11 @@
 require "rails_helper"
 
-RSpec.describe "existing user login" do
-  it "can login with username" do
+RSpec.describe "user logout" do
+  it "can logout" do
     user = User.create(username: "testertest", email: "my@email.com", password: "test")
 
     visit root_path
-
     click_on "I already have an account"
-
     expect(current_path).to eq(login_path)
 
     fill_in :username, with: user.username

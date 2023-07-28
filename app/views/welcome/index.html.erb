@@ -1,12 +1,12 @@
+<%= render partial: "shared/nav" %>
 <div id="title">
   <h1> Welcome to Movie Viewing Party! </h1>
 </div>
-
 <div id="users">
-<% if current_user %>
-  <%= link_to "Log Out" %>
-<% else %>
-  <%= link_to "Register as a User", new_register_path %>
-  <%= link_to "I already have an account", login_path, method: :get%>
-<% end %>
+  <% if current_user %>
+    <%= button_to "Log Out", logout_path, method: :delete %>
+  <% else %>
+    <%= link_to "Register as a User", new_register_path %>
+    <%= link_to "I already have an account", login_path, method: :get%>
+  <% end %>
 </div>
