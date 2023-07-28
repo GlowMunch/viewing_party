@@ -32,7 +32,6 @@ RSpec.describe "User Registration Page" do
       fill_in :user_password_confirmation, with: password
 
       click_on "Create User"
-
       expect(page).to have_content("Welcome, #{username}!")
 
 

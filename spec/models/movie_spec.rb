@@ -14,6 +14,7 @@
 #     it { should validate_numericality_of :rating } #less_than_or_equal_to: 10
 #     it { should validate_numericality_of :runtime }
 #   end
+
 #   describe "relationships" do
 #     it { should have_many :viewing_parties }
 #     it { should have_many(:viewing_users).through(:viewing_parties) }

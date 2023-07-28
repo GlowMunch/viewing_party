@@ -16,7 +16,7 @@ RSpec.describe "existing user login" do
     click_on "Log In"
     expect(current_path).to eq(user_path(user.id))
     expect(page).to have_content("Welcome, #{user.username}")
-    save_and_open_page
+
   end
 
   it "sad path - rejected with invalid credentials" do

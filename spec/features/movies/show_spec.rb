@@ -4,23 +4,31 @@ RSpec.describe "Movies Show Page" do
   describe "movie details page" do
     before :each do
       @user1 = FactoryBot.create(:user)
-      json_response = File.read('spec/fixtures/sandlot_id_search.json')
-      response1 = stub_request(:get, "https://api.themoviedb.org/3/search/movie/11528").
-        to_return(status: 200, body: json_response)
-      movie = JSON.parse(response1.response.body, symbolize_names: true)
-      @movie_id = movie[:id]  
 
-      json_response2 = File.read('spec/fixtures/sandlot_cast.json')
-      response2 = stub_request(:get, "https://api.themoviedb.org/3/movie/11528/credits").
+      # json_response = File.read('spec/fixtures/sandlot_id_search.json')
+      # response1 = stub_request(:get, "https://api.themoviedb.org/3/search/movie/11528").
+      #   to_return(status: 200, body: json_response)
+      # movie = JSON.parse(response1.response.body, symbolize_names: true)
+      # @movie_id = movie[:id]
+
+      stub_request(:get, "https://api.themoviedb.org/3/movie/search?api_key=615249dd5a14994e607e2d5bc668a81f&query=The%20Sandlot")
+      .to_return(body: file_fixture("movies_search.json").read)
+
+      search = MovieService.new.movie_search("The Sandlot")
+
+      @movie_id = search[:results].first[:id]
+require 'pry'; binding.pry
+      json_response2 = File.read('spec/fixtures/files/sandlot_cast.json')
+      response2 = stub_request(:get, "https://api.themoviedb.org/3/movie/11528/credits?api_key=615249dd5a14994e607e2d5bc668a81f").
         to_return(status: 200, body: json_response2)
       @movie_cast = JSON.parse(response2.response.body, symbolize_names: true)
 
-      json_response3 = File.read('spec/fixtures/sandlot_reviews.json')
+      json_response3 = File.read('spec/fixtures/files/sandlot_reviews.json')
       response3 = stub_request(:get, "https://api.themoviedb.org/3/movie/447365/reviews").
         to_return(status: 200, body: json_response3)
       @movie_review = JSON.parse(response3.response.body, symbolize_names: true)
     end
-    
+
     it "return to discover page button" do
       visit user_movie_path(@user1.id, @movie_id)
       expect(page).to have_button "Discover Movies"
