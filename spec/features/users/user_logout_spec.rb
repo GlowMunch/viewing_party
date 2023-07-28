@@ -14,21 +14,18 @@ RSpec.describe "user logout" do
     click_on "Log In"
     expect(current_path).to eq(user_path(user.id))
     expect(page).to have_content("Welcome, #{user.username}")
-    save_and_open_page
-  end
-
-  it "sad path - rejected with invalid credentials" do
-    user = User.create(username: "testertest", email: "my@email.com", password: "test")
 
     visit root_path
-    click_on "I already have an account"
-    expect(current_path).to eq(login_path)
 
-    fill_in :username, with: "badname"
-    fill_in :password, with: user.password
+    expect(page).to_not have_link("Register as a User")
+    expect(page).to_not have_link("I already have an account")
 
-    click_on "Log In"
-    expect(current_path).to eq(login_path)
-    expect(page).to have_content("Sorry, your credentials are bad.")
+    expect(page).to have_button("Log Out")
+
+    click_on "Log Out"
+    expect(page).to have_content("You have been logged out.")
+
+    expect(page).to_not have_button("Log Out")
+
   end
 end
